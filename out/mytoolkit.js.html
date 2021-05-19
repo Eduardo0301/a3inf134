@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: mytoolkit.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: mytoolkit.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * Used as a constructor for all widgets
  * @constructor
  */
@@ -170,10 +198,10 @@ var MyToolkit = (function() {
         }
         group.add(draw.text(options[0][0]).attr({x: group.get(0).attr('cx') + 20, y: group.get(0).attr('cy') - 15}))
         radioGroup.add(group);
-        for(let i = 1; i<options.length;++i){
+        for(let i = 1; i&lt;options.length;++i){
             let lastRadio = radioGroup.get(i-1).get(0)
             let group = draw.group()
-            if(options[i][1] && currentChecked == -1) {
+            if(options[i][1] &amp;&amp; currentChecked == -1) {
                 group.add(draw.circle(20).fill("#006666").stroke("black").attr({cy: lastRadio.attr("cy") + 25}))
                 currentChecked = i;
                 state = ["checked", currentChecked]
@@ -187,7 +215,7 @@ var MyToolkit = (function() {
         let checkEvent = null;
         let stateEvent = null;
 
-        for(let i = 0; i<options.length; ++i) {
+        for(let i = 0; i&lt;options.length; ++i) {
             radioGroup.get(i).get(0).mousedown(function (event){
                 if(i !== currentChecked) {
                     radioGroup.get(i).get(0).fill({color: "#006666"});
@@ -294,7 +322,7 @@ var MyToolkit = (function() {
                     }
                     return;
                 }
-                if(txt.length < 26) {
+                if(txt.length &lt; 26) {
                     text.text(txt.substr(0, txt.length - 1) + event.key + "|");
                     if (textEvent != null) {
                         textEvent({"event": event, "text": text.text().substr(0, txt.length)})
@@ -378,7 +406,7 @@ var MyToolkit = (function() {
                 incrementValue = inc;
                 let result = width * (inc/100);
                 widthPerc = result;
-                if(result >= width && (state == "empty" || state == "progress")){
+                if(result >= width &amp;&amp; (state == "empty" || state == "progress")){
                     state = "full"
                     progress.attr({width: width})
                     widthPerc = 100;
@@ -387,7 +415,7 @@ var MyToolkit = (function() {
                         incrementEvent({incrementValue});
                     transition();
                 }
-                else if(state == "full" && result == 0){
+                else if(state == "full" &amp;&amp; result == 0){
                     state = "empty"
                     progress.attr({width: result})
                     if(incrementEvent != null)
@@ -474,7 +502,7 @@ var MyToolkit = (function() {
                 let previous = thumb.cy()
                 let after = e.offsetY;
                 if((thumb.attr('height') + thumb.attr('y')) == bar.attr('y') + bar.attr('height')) {
-                    if(previous-after < 0){
+                    if(previous-after &lt; 0){
                         return;
                     }
                     else
@@ -485,7 +513,7 @@ var MyToolkit = (function() {
                         }
                     }
                 }
-                else if(thumb.attr('y') <= bar.attr('y')) {
+                else if(thumb.attr('y') &lt;= bar.attr('y')) {
                     if(previous-after > 0){
                         return;
                     }
@@ -504,7 +532,7 @@ var MyToolkit = (function() {
                         if(previous-after > 0){
                             direction  = "up"
                         }
-                        else if(previous-after < 0) {
+                        else if(previous-after &lt; 0) {
                             direction = "down"
                         }
                         thumbEvent({"event": e, "direction": direction });
@@ -578,7 +606,7 @@ var MyToolkit = (function() {
         up.mousedown(function (event) {
             if(state == "hover up") {
                 let current = parseInt(num.text());
-                if(current < max) {
+                if(current &lt; max) {
                     num.text((current + 1).toString())
                     if(changeEvent != null){
                         changeEvent({"event": event, "current": current+1})
@@ -641,4 +669,26 @@ var MyToolkit = (function() {
     return {Button, CheckBox, RadioButton, TextBox, ProgressBar, ScrollBar, NumberBox}
 }());
 
-export{MyToolkit}
+export{MyToolkit}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="MyToolkit.html">MyToolkit</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue May 18 2021 22:47:55 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
